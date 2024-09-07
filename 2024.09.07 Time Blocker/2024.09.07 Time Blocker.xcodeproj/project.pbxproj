@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		64BFDB722C8CF2D600D9CE70 /* _024_09_07_Time_BlockerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFDB712C8CF2D600D9CE70 /* _024_09_07_Time_BlockerApp.swift */; };
+		64BFDB742C8CF2D600D9CE70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFDB732C8CF2D600D9CE70 /* ContentView.swift */; };
+		64BFDB762C8CF2D700D9CE70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BFDB752C8CF2D700D9CE70 /* Assets.xcassets */; };
+		64BFDB792C8CF2D700D9CE70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64BFDB782C8CF2D700D9CE70 /* Preview Assets.xcassets */; };
+		64BFDB832C8CF2D800D9CE70 /* _024_09_07_Time_BlockerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFDB822C8CF2D800D9CE70 /* _024_09_07_Time_BlockerTests.swift */; };
+		64BFDB8D2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFDB8C2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITests.swift */; };
+		64BFDB8F2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFDB8E2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		64BFDB7F2C8CF2D800D9CE70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64BFDB662C8CF2D500D9CE70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64BFDB6D2C8CF2D600D9CE70;
+			remoteInfo = "2024.09.07 Time Blocker";
+		};
+		64BFDB892C8CF2D800D9CE70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64BFDB662C8CF2D500D9CE70 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64BFDB6D2C8CF2D600D9CE70;
+			remoteInfo = "2024.09.07 Time Blocker";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		64BFDB6E2C8CF2D600D9CE70 /* 2024.09.07 Time Blocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2024.09.07 Time Blocker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64BFDB712C8CF2D600D9CE70 /* _024_09_07_Time_BlockerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _024_09_07_Time_BlockerApp.swift; sourceTree = "<group>"; };
+		64BFDB732C8CF2D600D9CE70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		64BFDB752C8CF2D700D9CE70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		64BFDB782C8CF2D700D9CE70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		64BFDB7E2C8CF2D800D9CE70 /* 2024.09.07 Time BlockerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "2024.09.07 Time BlockerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64BFDB822C8CF2D800D9CE70 /* _024_09_07_Time_BlockerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _024_09_07_Time_BlockerTests.swift; sourceTree = "<group>"; };
+		64BFDB882C8CF2D800D9CE70 /* 2024.09.07 Time BlockerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "2024.09.07 Time BlockerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64BFDB8C2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _024_09_07_Time_BlockerUITests.swift; sourceTree = "<group>"; };
+		64BFDB8E2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _024_09_07_Time_BlockerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		64BFDB6B2C8CF2D600D9CE70 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64BFDB7B2C8CF2D800D9CE70 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64BFDB852C8CF2D800D9CE70 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64BFDB652C8CF2D500D9CE70 = {
+			isa = PBXGroup;
+			children = (
+				64BFDB702C8CF2D600D9CE70 /* 2024.09.07 Time Blocker */,
+				64BFDB812C8CF2D800D9CE70 /* 2024.09.07 Time BlockerTests */,
+				64BFDB8B2C8CF2D800D9CE70 /* 2024.09.07 Time BlockerUITests */,
+				64BFDB6F2C8CF2D600D9CE70 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		64BFDB6F2C8CF2D600D9CE70 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64BFDB6E2C8CF2D600D9CE70 /* 2024.09.07 Time Blocker.app */,
+				64BFDB7E2C8CF2D800D9CE70 /* 2024.09.07 Time BlockerTests.xctest */,
+				64BFDB882C8CF2D800D9CE70 /* 2024.09.07 Time BlockerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		64BFDB702C8CF2D600D9CE70 /* 2024.09.07 Time Blocker */ = {
+			isa = PBXGroup;
+			children = (
+				64BFDB712C8CF2D600D9CE70 /* _024_09_07_Time_BlockerApp.swift */,
+				64BFDB732C8CF2D600D9CE70 /* ContentView.swift */,
+				64BFDB752C8CF2D700D9CE70 /* Assets.xcassets */,
+				64BFDB772C8CF2D700D9CE70 /* Preview Content */,
+			);
+			path = "2024.09.07 Time Blocker";
+			sourceTree = "<group>";
+		};
+		64BFDB772C8CF2D700D9CE70 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				64BFDB782C8CF2D700D9CE70 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		64BFDB812C8CF2D800D9CE70 /* 2024.09.07 Time BlockerTests */ = {
+			isa = PBXGroup;
+			children = (
+				64BFDB822C8CF2D800D9CE70 /* _024_09_07_Time_BlockerTests.swift */,
+			);
+			path = "2024.09.07 Time BlockerTests";
+			sourceTree = "<group>";
+		};
+		64BFDB8B2C8CF2D800D9CE70 /* 2024.09.07 Time BlockerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				64BFDB8C2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITests.swift */,
+				64BFDB8E2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITestsLaunchTests.swift */,
+			);
+			path = "2024.09.07 Time BlockerUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		64BFDB6D2C8CF2D600D9CE70 /* 2024.09.07 Time Blocker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64BFDB922C8CF2D800D9CE70 /* Build configuration list for PBXNativeTarget "2024.09.07 Time Blocker" */;
+			buildPhases = (
+				64BFDB6A2C8CF2D600D9CE70 /* Sources */,
+				64BFDB6B2C8CF2D600D9CE70 /* Frameworks */,
+				64BFDB6C2C8CF2D600D9CE70 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "2024.09.07 Time Blocker";
+			productName = "2024.09.07 Time Blocker";
+			productReference = 64BFDB6E2C8CF2D600D9CE70 /* 2024.09.07 Time Blocker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		64BFDB7D2C8CF2D800D9CE70 /* 2024.09.07 Time BlockerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64BFDB952C8CF2D800D9CE70 /* Build configuration list for PBXNativeTarget "2024.09.07 Time BlockerTests" */;
+			buildPhases = (
+				64BFDB7A2C8CF2D800D9CE70 /* Sources */,
+				64BFDB7B2C8CF2D800D9CE70 /* Frameworks */,
+				64BFDB7C2C8CF2D800D9CE70 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64BFDB802C8CF2D800D9CE70 /* PBXTargetDependency */,
+			);
+			name = "2024.09.07 Time BlockerTests";
+			productName = "2024.09.07 Time BlockerTests";
+			productReference = 64BFDB7E2C8CF2D800D9CE70 /* 2024.09.07 Time BlockerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		64BFDB872C8CF2D800D9CE70 /* 2024.09.07 Time BlockerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64BFDB982C8CF2D800D9CE70 /* Build configuration list for PBXNativeTarget "2024.09.07 Time BlockerUITests" */;
+			buildPhases = (
+				64BFDB842C8CF2D800D9CE70 /* Sources */,
+				64BFDB852C8CF2D800D9CE70 /* Frameworks */,
+				64BFDB862C8CF2D800D9CE70 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64BFDB8A2C8CF2D800D9CE70 /* PBXTargetDependency */,
+			);
+			name = "2024.09.07 Time BlockerUITests";
+			productName = "2024.09.07 Time BlockerUITests";
+			productReference = 64BFDB882C8CF2D800D9CE70 /* 2024.09.07 Time BlockerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64BFDB662C8CF2D500D9CE70 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					64BFDB6D2C8CF2D600D9CE70 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					64BFDB7D2C8CF2D800D9CE70 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 64BFDB6D2C8CF2D600D9CE70;
+					};
+					64BFDB872C8CF2D800D9CE70 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 64BFDB6D2C8CF2D600D9CE70;
+					};
+				};
+			};
+			buildConfigurationList = 64BFDB692C8CF2D500D9CE70 /* Build configuration list for PBXProject "2024.09.07 Time Blocker" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 64BFDB652C8CF2D500D9CE70;
+			productRefGroup = 64BFDB6F2C8CF2D600D9CE70 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				64BFDB6D2C8CF2D600D9CE70 /* 2024.09.07 Time Blocker */,
+				64BFDB7D2C8CF2D800D9CE70 /* 2024.09.07 Time BlockerTests */,
+				64BFDB872C8CF2D800D9CE70 /* 2024.09.07 Time BlockerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		64BFDB6C2C8CF2D600D9CE70 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64BFDB792C8CF2D700D9CE70 /* Preview Assets.xcassets in Resources */,
+				64BFDB762C8CF2D700D9CE70 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64BFDB7C2C8CF2D800D9CE70 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64BFDB862C8CF2D800D9CE70 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		64BFDB6A2C8CF2D600D9CE70 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64BFDB742C8CF2D600D9CE70 /* ContentView.swift in Sources */,
+				64BFDB722C8CF2D600D9CE70 /* _024_09_07_Time_BlockerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64BFDB7A2C8CF2D800D9CE70 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64BFDB832C8CF2D800D9CE70 /* _024_09_07_Time_BlockerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64BFDB842C8CF2D800D9CE70 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64BFDB8D2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITests.swift in Sources */,
+				64BFDB8F2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		64BFDB802C8CF2D800D9CE70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64BFDB6D2C8CF2D600D9CE70 /* 2024.09.07 Time Blocker */;
+			targetProxy = 64BFDB7F2C8CF2D800D9CE70 /* PBXContainerItemProxy */;
+		};
+		64BFDB8A2C8CF2D800D9CE70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64BFDB6D2C8CF2D600D9CE70 /* 2024.09.07 Time Blocker */;
+			targetProxy = 64BFDB892C8CF2D800D9CE70 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		64BFDB902C8CF2D800D9CE70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		64BFDB912C8CF2D800D9CE70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		64BFDB932C8CF2D800D9CE70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"2024.09.07 Time Blocker/Preview Content\"";
+				DEVELOPMENT_TEAM = XT33G7U496;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "forwardArrow.-024-09-07-Time-Blocker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		64BFDB942C8CF2D800D9CE70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"2024.09.07 Time Blocker/Preview Content\"";
+				DEVELOPMENT_TEAM = XT33G7U496;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "forwardArrow.-024-09-07-Time-Blocker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		64BFDB962C8CF2D800D9CE70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XT33G7U496;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "forwardArrow.-024-09-07-Time-BlockerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/2024.09.07 Time Blocker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/2024.09.07 Time Blocker";
+			};
+			name = Debug;
+		};
+		64BFDB972C8CF2D800D9CE70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XT33G7U496;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "forwardArrow.-024-09-07-Time-BlockerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/2024.09.07 Time Blocker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/2024.09.07 Time Blocker";
+			};
+			name = Release;
+		};
+		64BFDB992C8CF2D800D9CE70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XT33G7U496;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "forwardArrow.-024-09-07-Time-BlockerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "2024.09.07 Time Blocker";
+			};
+			name = Debug;
+		};
+		64BFDB9A2C8CF2D800D9CE70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XT33G7U496;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "forwardArrow.-024-09-07-Time-BlockerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "2024.09.07 Time Blocker";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64BFDB692C8CF2D500D9CE70 /* Build configuration list for PBXProject "2024.09.07 Time Blocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64BFDB902C8CF2D800D9CE70 /* Debug */,
+				64BFDB912C8CF2D800D9CE70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64BFDB922C8CF2D800D9CE70 /* Build configuration list for PBXNativeTarget "2024.09.07 Time Blocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64BFDB932C8CF2D800D9CE70 /* Debug */,
+				64BFDB942C8CF2D800D9CE70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64BFDB952C8CF2D800D9CE70 /* Build configuration list for PBXNativeTarget "2024.09.07 Time BlockerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64BFDB962C8CF2D800D9CE70 /* Debug */,
+				64BFDB972C8CF2D800D9CE70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64BFDB982C8CF2D800D9CE70 /* Build configuration list for PBXNativeTarget "2024.09.07 Time BlockerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64BFDB992C8CF2D800D9CE70 /* Debug */,
+				64BFDB9A2C8CF2D800D9CE70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 64BFDB662C8CF2D500D9CE70 /* Project object */;
+}
