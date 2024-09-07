@@ -15,7 +15,7 @@ struct ContentView: View {
         VStack(spacing: 0) {
             HeaderView(selectedColor: $selectedColor)
             
-            ScrollView([.vertical, .horizontal], showsIndicators: false) {
+            ScrollView(.vertical, showsIndicators: false) {
                 GridView()
                     .scaleEffect(scale)
                     .gesture(MagnificationGesture()
@@ -75,42 +75,52 @@ struct GridView: View {
     let daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     
     var body: some View {
-        VStack(spacing: 0) {
-            // Day headers
-            HStack(spacing: 0) {
-                TimeColumnHeader()
-                ForEach(daysOfWeek, id: \.self) { day in
-                    Text(day)
-                        .font(.system(size: 14))
-                        .frame(maxWidth: .infinity)
-                        .border(Color.gray.opacity(0.3))
-                }
-            }
+        GeometryReader { geometry in
+            let totalWidth = geometry.size.width
+            let regularColumnWidth = totalWidth / 8.5 // 7 regular columns + 1.5 for time column
+            let timeColumnWidth = regularColumnWidth * 1.5
             
-            // Grid cells
-            ForEach(0..<rows, id: \.self) { row in
+            VStack(spacing: 0) {
+                // Day headers
                 HStack(spacing: 0) {
-                    TimeCell(row: row)
-                    ForEach(1..<columns, id: \.self) { _ in
-                        GridCell()
+                    TimeColumnHeader(width: timeColumnWidth)
+                    ForEach(daysOfWeek, id: \.self) { day in
+                        Text(day)
+                            .font(.system(size: 14))
+                            .frame(width: regularColumnWidth)
+                            .border(Color.gray.opacity(0.3))
+                    }
+                }
+                
+                // Grid cells
+                ForEach(0..<rows, id: \.self) { row in
+                    HStack(spacing: 0) {
+                        TimeCell(row: row, width: timeColumnWidth)
+                        ForEach(1..<columns, id: \.self) { _ in
+                            GridCell(width: regularColumnWidth)
+                        }
                     }
                 }
             }
+            .frame(width: totalWidth)
         }
     }
 }
 
 struct TimeColumnHeader: View {
+    let width: CGFloat
+    
     var body: some View {
         Text("Time")
-            .font(.system(size: 14)) // Updated font size
-            .frame(width: UIScreen.main.bounds.width / 8 * 1.5)
+            .font(.system(size: 14))
+            .frame(width: width)
             .border(Color.gray.opacity(0.3))
     }
 }
 
 struct TimeCell: View {
     let row: Int
+    let width: CGFloat
     
     var body: some View {
         VStack {
@@ -119,19 +129,21 @@ struct TimeCell: View {
                 .foregroundColor(.gray.opacity(0.6))
                 .frame(maxWidth: .infinity, alignment: .leading)
             Text("\(row):00")
-                .font(.system(size: 14)) // Updated font size
+                .font(.system(size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .frame(width: UIScreen.main.bounds.width / 8 * 1.5, height: UIScreen.main.bounds.height / 12)
+        .frame(width: width, height: UIScreen.main.bounds.height / 12)
         .border(Color.gray.opacity(0.3))
     }
 }
 
 struct GridCell: View {
+    let width: CGFloat
+    
     var body: some View {
         Rectangle()
             .fill(Color.white)
-            .frame(width: UIScreen.main.bounds.width / 8, height: UIScreen.main.bounds.height / 12)
+            .frame(width: width, height: UIScreen.main.bounds.height / 12)
             .border(Color.gray.opacity(0.3))
     }
 }
