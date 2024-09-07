@@ -71,13 +71,13 @@ struct ColorPickerView: View {
 
 struct GridView: View {
     let columns = 8
-    let rows = 24
+    let rows = 18 // 5 AM to 10 PM is 18 hours
     let daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     
     var body: some View {
         GeometryReader { geometry in
             let totalWidth = geometry.size.width
-            let regularColumnWidth = totalWidth / 8.5 // 7 regular columns + 1.5 for time column
+            let regularColumnWidth = totalWidth / 8.5
             let timeColumnWidth = regularColumnWidth * 1.5
             
             VStack(spacing: 0) {
@@ -95,15 +95,21 @@ struct GridView: View {
                 // Grid cells
                 ForEach(0..<rows, id: \.self) { row in
                     HStack(spacing: 0) {
-                        TimeCell(row: row, width: timeColumnWidth)
-                        ForEach(1..<columns, id: \.self) { _ in
-                            GridCell(width: regularColumnWidth)
+                        TimeCell(hour: row + 5, width: timeColumnWidth)
+                        ForEach(0..<7, id: \.self) { column in
+                            GridCell(width: regularColumnWidth, day: daysOfWeek[column], time: formatTime(hour: row + 5))
                         }
                     }
                 }
             }
             .frame(width: totalWidth)
         }
+    }
+    
+    func formatTime(hour: Int) -> String {
+        let period = hour < 12 ? "AM" : "PM"
+        let adjustedHour = hour > 12 ? hour - 12 : (hour == 0 ? 12 : hour)
+        return String(format: "%d:00 %@", adjustedHour, period)
     }
 }
 
@@ -119,7 +125,7 @@ struct TimeColumnHeader: View {
 }
 
 struct TimeCell: View {
-    let row: Int
+    let hour: Int
     let width: CGFloat
     
     var body: some View {
@@ -128,23 +134,43 @@ struct TimeCell: View {
                 .font(.system(size: 8))
                 .foregroundColor(.gray.opacity(0.6))
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text("\(row):00")
+            Text(formatTime(hour: hour))
                 .font(.system(size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(width: width, height: UIScreen.main.bounds.height / 12)
         .border(Color.gray.opacity(0.3))
     }
+    
+    func formatTime(hour: Int) -> String {
+        let period = hour < 12 ? "AM" : "PM"
+        let adjustedHour = hour > 12 ? hour - 12 : (hour == 0 ? 12 : hour)
+        return String(format: "%d:00 %@", adjustedHour, period)
+    }
 }
 
 struct GridCell: View {
     let width: CGFloat
+    let day: String
+    let time: String
     
     var body: some View {
-        Rectangle()
-            .fill(Color.white)
-            .frame(width: width, height: UIScreen.main.bounds.height / 12)
-            .border(Color.gray.opacity(0.3))
+        ZStack(alignment: .topLeading) {
+            Rectangle()
+                .fill(Color.white)
+                .frame(width: width, height: UIScreen.main.bounds.height / 12)
+                .border(Color.gray.opacity(0.3))
+            
+            VStack(alignment: .leading, spacing: 0) {
+                Text(day)
+                    .font(.system(size: 8))
+                    .foregroundColor(Color.gray.opacity(0.6))
+                Text(time)
+                    .font(.system(size: 8))
+                    .foregroundColor(Color.gray.opacity(0.6))
+            }
+            .padding(4)
+        }
     }
 }
 
