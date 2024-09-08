@@ -10,34 +10,50 @@ import PencilKit
 
 struct ContentView: View {
     @State private var scale: CGFloat = 1.0
-    @State private var selectedColor: Color = .black
+    @State private var selectedColor: Color = Color(UIColor.black)
     @State private var penSize: CGFloat = 2.0
     @State private var canvasView = PKCanvasView()
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
+            VStack(spacing: 0) {
+                HeaderView(selectedColor: $selectedColor, penSize: $penSize, canvasView: $canvasView)
+                
                 VStack(spacing: 0) {
-                    HeaderView(selectedColor: $selectedColor, penSize: $penSize, canvasView: $canvasView)
+                    // Sticky day labels
+                    DayLabelsView(width: geometry.size.width)
                     
                     ScrollView(.vertical, showsIndicators: false) {
-                        GridView()
-                            .scaleEffect(scale)
-                            .gesture(MagnificationGesture()
-                                .onChanged { value in
-                                    scale = min(max(value, 1), 3)
-                                }
-                            )
+                        ZStack {
+                            GridView(excludeDayLabels: true)
+                                .frame(width: geometry.size.width)
+                            
+                            DrawingView(canvasView: $canvasView, selectedColor: $selectedColor, penSize: $penSize)
+                                .frame(width: geometry.size.width, height: geometry.size.height * 2) // Adjust multiplier as needed
+                        }
                     }
                 }
-                .background(Color.white)
-                
-                DrawingView(canvasView: $canvasView, selectedColor: $selectedColor, penSize: $penSize)
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                    .opacity(0.2)
+            }
+            .background(Color.white)
+            .edgesIgnoringSafeArea(.all)
+        }
+    }
+}
+
+struct DayLabelsView: View {
+    let width: CGFloat
+    let daysOfWeek = ["Time", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(daysOfWeek, id: \.self) { day in
+                Text(day)
+                    .font(.system(size: 14))
+                    .foregroundColor(.black)
+                    .frame(width: day == "Time" ? width / 8.5 * 1.5 : width / 8.5)
+                    .border(Color.gray.opacity(0.3))
             }
         }
-        .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -72,7 +88,7 @@ struct HeaderView: View {
 struct ColorPickerView: View {
     @Binding var selectedColor: Color
     @Binding var penSize: CGFloat
-    let colors: [Color] = [.black, .red, .blue, .green, .yellow, .purple]
+    let colors: [Color] = [Color(UIColor.black), .red, .blue, .green, .yellow, .purple]
     let sizes: [CGFloat] = [1, 2, 4, 6, 8]
     
     var body: some View {
@@ -81,7 +97,7 @@ struct ColorPickerView: View {
                 Circle()
                     .fill(color)
                     .frame(width: 20, height: 20)
-                    .overlay(Circle().stroke(Color.gray, lineWidth: selectedColor == color ? 2 : 0))
+                    .overlay(Circle().stroke(Color.gray, lineWidth: isColorSelected(color) ? 2 : 0))
                     .onTapGesture {
                         selectedColor = color
                     }
@@ -98,12 +114,20 @@ struct ColorPickerView: View {
             }
         }
     }
+    
+    private func isColorSelected(_ color: Color) -> Bool {
+        if color == Color(UIColor.black) && selectedColor == Color(UIColor.black) {
+            return true
+        }
+        return selectedColor == color
+    }
 }
 
 struct GridView: View {
     let columns = 8
     let rows = 18 // 5 AM to 10 PM is 18 hours
     let daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    let excludeDayLabels: Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -112,18 +136,6 @@ struct GridView: View {
             let timeColumnWidth = regularColumnWidth * 1.5
             
             VStack(spacing: 0) {
-                // Day headers
-                HStack(spacing: 0) {
-                    TimeColumnHeader(width: timeColumnWidth)
-                    ForEach(daysOfWeek, id: \.self) { day in
-                        Text(day)
-                            .font(.system(size: 14))
-                            .foregroundColor(.black)
-                            .frame(width: regularColumnWidth)
-                            .border(Color.gray.opacity(0.3))
-                    }
-                }
-                
                 // Grid cells
                 ForEach(0..<rows, id: \.self) { row in
                     HStack(spacing: 0) {
