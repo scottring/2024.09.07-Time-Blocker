@@ -21,76 +21,69 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
-                VStack(spacing: 0) {
-                    Spacer().frame(height: 20) // 20 pixels of padding above the header
-                    
-                    HStack {
-                        // Left side
-                        HStack(spacing: 10) {
-                            Menu {
-                                ForEach(Array(savedSheets.keys).sorted(), id: \.self) { name in
-                                    Button(action: { loadSheet(name: name) }) {
-                                        Text(name).font(.system(size: 14))
-                                    }
-                                }
-                                if !savedSheets.isEmpty {
-                                    Divider()
-                                    Button(role: .destructive, action: { deleteCurrentSheet() }) {
-                                        Text("Delete Current Sheet").font(.system(size: 14))
-                                    }
-                                }
-                            } label: {
-                                HStack {
-                                    Text(currentWeek)
-                                    Image(systemName: "chevron.down")
-                                }
-                                .font(.system(size: 14))
-                                .foregroundColor(.primary)
+                HStack {
+                    Menu {
+                        ForEach(Array(savedSheets.keys).sorted(), id: \.self) { name in
+                            Button(action: { loadSheet(name: name) }) {
+                                Text(name).font(.system(size: 14))
                             }
-                            
-                            Image(systemName: "square.and.arrow.down")
-                                .font(.system(size: 14))
-                                .foregroundColor(.green)
-                                .onTapGesture {
-                                    isNamingSheet = true
-                                }
-                            
-                            Image(systemName: "plus")
-                                .font(.system(size: 14))
-                                .foregroundColor(.blue)
-                                .onTapGesture {
-                                    newSheet()
-                                }
                         }
-                        
-                        Spacer()
-                        
-                        // Center
-                        ColorPickerView(selectedColor: $selectedColor, penSize: $penSize)
-                        
-                        Spacer()
-                        
-                        // Right side
-                        Button(action: {
-                            canvasView.drawing = PKDrawing()
-                        }) {
-                            Image(systemName: "trash")
+                        if !savedSheets.isEmpty {
+                            Divider()
+                            Button(role: .destructive, action: { deleteCurrentSheet() }) {
+                                Text("Delete Current Sheet").font(.system(size: 14))
+                            }
                         }
+                    } label: {
+                        HStack {
+                            Text(currentWeek)
+                            Image(systemName: "chevron.down")
+                        }
+                        .font(.system(size: 14))
+                        .foregroundColor(.primary)
                     }
-                    .padding()
-                    .frame(height: 44) // Set a fixed height for the header
                     
-                    VStack(spacing: 0) {
-                        DayLabelsView(width: geometry.size.width)
-                        
-                        ScrollView(.vertical, showsIndicators: false) {
-                            ZStack {
-                                GridView(excludeDayLabels: true)
-                                    .frame(width: geometry.size.width)
-                                
-                                DrawingView(canvasView: $canvasView, selectedColor: $selectedColor, penSize: $penSize)
-                                    .frame(width: geometry.size.width, height: geometry.size.height * 2)
-                            }
+                    Button("Save") {
+                        isNamingSheet = true
+                    }
+                    .font(.system(size: 14))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    
+                    Button("New Week") {
+                        newSheet()
+                    }
+                    .font(.system(size: 14))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+                    
+                    Spacer()
+                    
+                    ColorPickerView(selectedColor: $selectedColor, penSize: $penSize)
+                    Button(action: {
+                        canvasView.drawing = PKDrawing()
+                    }) {
+                        Image(systemName: "trash")
+                    }
+                }
+                .padding()
+                
+                VStack(spacing: 0) {
+                    DayLabelsView(width: geometry.size.width)
+                    
+                    ScrollView(.vertical, showsIndicators: false) {
+                        ZStack {
+                            GridView(excludeDayLabels: true)
+                                .frame(width: geometry.size.width)
+                            
+                            DrawingView(canvasView: $canvasView, selectedColor: $selectedColor, penSize: $penSize)
+                                .frame(width: geometry.size.width, height: geometry.size.height * 2)
                         }
                     }
                 }
