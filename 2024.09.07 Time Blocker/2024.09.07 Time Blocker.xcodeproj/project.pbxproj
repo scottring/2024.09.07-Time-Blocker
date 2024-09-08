@@ -14,6 +14,7 @@
 		64BFDB832C8CF2D800D9CE70 /* _024_09_07_Time_BlockerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFDB822C8CF2D800D9CE70 /* _024_09_07_Time_BlockerTests.swift */; };
 		64BFDB8D2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFDB8C2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITests.swift */; };
 		64BFDB8F2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFDB8E2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITestsLaunchTests.swift */; };
+		64BFDBD62C8DA12C00D9CE70 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFDBD52C8DA12C00D9CE70 /* DrawingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		64BFDB882C8CF2D800D9CE70 /* 2024.09.07 Time BlockerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "2024.09.07 Time BlockerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BFDB8C2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _024_09_07_Time_BlockerUITests.swift; sourceTree = "<group>"; };
 		64BFDB8E2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _024_09_07_Time_BlockerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		64BFDBD52C8DA12C00D9CE70 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				64BFDB712C8CF2D600D9CE70 /* _024_09_07_Time_BlockerApp.swift */,
 				64BFDB732C8CF2D600D9CE70 /* ContentView.swift */,
+				64BFDBD52C8DA12C00D9CE70 /* DrawingView.swift */,
 				64BFDB752C8CF2D700D9CE70 /* Assets.xcassets */,
 				64BFDB772C8CF2D700D9CE70 /* Preview Content */,
 			);
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64BFDBD62C8DA12C00D9CE70 /* DrawingView.swift in Sources */,
 				64BFDB742C8CF2D600D9CE70 /* ContentView.swift in Sources */,
 				64BFDB722C8CF2D600D9CE70 /* _024_09_07_Time_BlockerApp.swift in Sources */,
 			);
