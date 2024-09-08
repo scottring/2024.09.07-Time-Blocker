@@ -6,39 +6,57 @@
 //
 
 import SwiftUI
+import PencilKit
 
 struct ContentView: View {
     @State private var scale: CGFloat = 1.0
     @State private var selectedColor: Color = .black
-
+    @State private var penSize: CGFloat = 2.0
+    @State private var canvasView = PKCanvasView()
+    
     var body: some View {
-        VStack(spacing: 0) {
-            HeaderView(selectedColor: $selectedColor)
-            
-            ScrollView(.vertical, showsIndicators: false) {
-                GridView()
-                    .scaleEffect(scale)
-                    .gesture(MagnificationGesture()
-                        .onChanged { value in
-                            scale = min(max(value, 1), 3)
-                        }
-                    )
+        GeometryReader { geometry in
+            ZStack {
+                VStack(spacing: 0) {
+                    HeaderView(selectedColor: $selectedColor, penSize: $penSize, canvasView: $canvasView)
+                    
+                    ScrollView(.vertical, showsIndicators: false) {
+                        GridView()
+                            .scaleEffect(scale)
+                            .gesture(MagnificationGesture()
+                                .onChanged { value in
+                                    scale = min(max(value, 1), 3)
+                                }
+                            )
+                    }
+                }
+                .background(Color.white)
+                
+                DrawingView(canvasView: $canvasView, selectedColor: $selectedColor, penSize: $penSize)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .opacity(0.2)
             }
         }
-        .background(Color.white)
         .edgesIgnoringSafeArea(.all)
     }
 }
 
 struct HeaderView: View {
     @Binding var selectedColor: Color
+    @Binding var penSize: CGFloat
+    @Binding var canvasView: PKCanvasView
     
     var body: some View {
         HStack {
             Image("logo") // Replace with your logo
             Spacer()
-            ColorPickerView(selectedColor: $selectedColor)
+            ColorPickerView(selectedColor: $selectedColor, penSize: $penSize)
             Spacer()
+            Button(action: {
+                canvasView.drawing = PKDrawing()
+            }) {
+                Image(systemName: "trash")
+            }
             Button(action: {
                 // Implement print functionality
             }) {
@@ -47,13 +65,15 @@ struct HeaderView: View {
         }
         .frame(height: 50)
         .padding(.horizontal)
-        .padding(.vertical, 20) // Add 20 pixels of padding to top and bottom
+        .padding(.vertical, 20)
     }
 }
 
 struct ColorPickerView: View {
     @Binding var selectedColor: Color
-    let colors: [Color] = [.red, .blue, .green, .yellow, .purple]
+    @Binding var penSize: CGFloat
+    let colors: [Color] = [.black, .red, .blue, .green, .yellow, .purple]
+    let sizes: [CGFloat] = [1, 2, 4, 6, 8]
     
     var body: some View {
         HStack {
@@ -61,8 +81,19 @@ struct ColorPickerView: View {
                 Circle()
                     .fill(color)
                     .frame(width: 20, height: 20)
+                    .overlay(Circle().stroke(Color.gray, lineWidth: selectedColor == color ? 2 : 0))
                     .onTapGesture {
                         selectedColor = color
+                    }
+            }
+            Divider().frame(height: 20)
+            ForEach(sizes, id: \.self) { size in
+                Circle()
+                    .fill(selectedColor)
+                    .frame(width: size * 2, height: size * 2)
+                    .overlay(Circle().stroke(Color.gray, lineWidth: penSize == size ? 2 : 0))
+                    .onTapGesture {
+                        penSize = size
                     }
             }
         }
@@ -87,6 +118,7 @@ struct GridView: View {
                     ForEach(daysOfWeek, id: \.self) { day in
                         Text(day)
                             .font(.system(size: 14))
+                            .foregroundColor(.black)
                             .frame(width: regularColumnWidth)
                             .border(Color.gray.opacity(0.3))
                     }
@@ -119,6 +151,7 @@ struct TimeColumnHeader: View {
     var body: some View {
         Text("Time")
             .font(.system(size: 14))
+            .foregroundColor(.black)
             .frame(width: width)
             .border(Color.gray.opacity(0.3))
     }
@@ -130,12 +163,9 @@ struct TimeCell: View {
     
     var body: some View {
         VStack {
-            Text("Day/Time")
-                .font(.system(size: 8))
-                .foregroundColor(.gray.opacity(0.6))
-                .frame(maxWidth: .infinity, alignment: .leading)
             Text(formatTime(hour: hour))
                 .font(.system(size: 14))
+                .foregroundColor(.black)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(width: width, height: UIScreen.main.bounds.height / 12)
