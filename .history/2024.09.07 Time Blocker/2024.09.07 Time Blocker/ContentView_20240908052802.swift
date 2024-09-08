@@ -1,5 +1,5 @@
 //
-//          ContentView.swift
+//  ContentView.swift
 //  2024.09.07 Time Blocker
 //
 //  Created by Scott Kaufman on 9/7/24.
@@ -12,59 +12,36 @@ struct ContentView: View {
     @State private var selectedColor: Color = .black
     @State private var penSize: CGFloat = 2.0
     @State private var canvasView = PKCanvasView()
-    @State private var currentWeek = "Untitled Week"
+    @State private var sheetName = "Untitled"
     @State private var savedSheets: [String: PKDrawing] = [:]
     @State private var isNamingSheet = false
-    @State private var newSheetName = ""
-    @State private var showingSavedSheets = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 HStack {
                     Menu {
-                        ForEach(Array(savedSheets.keys).sorted(), id: \.self) { name in
-                            Button(action: { loadSheet(name: name) }) {
-                                Text(name).font(.system(size: 14))
+                        ForEach(Array(savedSheets.keys), id: \.self) { name in
+                            Button(name) {
+                                loadSheet(name: name)
                             }
                         }
+                        Button("New Sheet") {
+                            newSheet()
+                        }
+                        Button("Save Current Sheet") {
+                            isNamingSheet = true
+                        }
                         if !savedSheets.isEmpty {
-                            Divider()
-                            Button(role: .destructive, action: { deleteCurrentSheet() }) {
-                                Text("Delete Current Sheet").font(.system(size: 14))
+                            Button("Delete Current Sheet", role: .destructive) {
+                                deleteCurrentSheet()
                             }
                         }
                     } label: {
-                        HStack {
-                            Text(currentWeek)
-                            Image(systemName: "chevron.down")
-                        }
-                        .font(.system(size: 14))
-                        .foregroundColor(.primary)
+                        Label(sheetName, systemImage: "doc")
                     }
-                    
                     Spacer()
-                    
-                    Button("Save") {
-                        isNamingSheet = true
-                    }
-                    .font(.system(size: 14))
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
-                    
-                    Button("New Week") {
-                        newSheet()
-                    }
-                    .font(.system(size: 14))
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
-                    
                     ColorPickerView(selectedColor: $selectedColor, penSize: $penSize)
                     Button(action: {
                         canvasView.drawing = PKDrawing()
@@ -91,41 +68,33 @@ struct ContentView: View {
             .background(Color.white)
             .edgesIgnoringSafeArea(.all)
             .alert("Name Your Sheet", isPresented: $isNamingSheet) {
-                TextField("Sheet Name", text: $newSheetName)
-                    .font(.system(size: 14))
-                Button("Save", action: saveCurrentSheet)
-                    .font(.system(size: 14))
+                TextField("Sheet Name", text: $sheetName)
+                Button("Save") {
+                    saveCurrentSheet()
+                }
                 Button("Cancel", role: .cancel) {}
-                    .font(.system(size: 14))
-            } message: {
-                Text("Enter a name for this week's sheet")
-                    .font(.system(size: 14))
             }
         }
     }
     
     private func newSheet() {
-        currentWeek = "Untitled Week"
         canvasView.drawing = PKDrawing()
+        sheetName = "Untitled"
     }
     
     private func saveCurrentSheet() {
-        if !newSheetName.isEmpty {
-            savedSheets[newSheetName] = canvasView.drawing
-            currentWeek = newSheetName
-            newSheetName = ""
-        }
+        savedSheets[sheetName] = canvasView.drawing
     }
     
     private func loadSheet(name: String) {
         if let drawing = savedSheets[name] {
             canvasView.drawing = drawing
-            currentWeek = name
+            sheetName = name
         }
     }
     
     private func deleteCurrentSheet() {
-        savedSheets.removeValue(forKey: currentWeek)
+        savedSheets.removeValue(forKey: sheetName)
         newSheet()
     }
 }

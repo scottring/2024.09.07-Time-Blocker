@@ -12,51 +12,43 @@ struct ContentView: View {
     @State private var selectedColor: Color = .black
     @State private var penSize: CGFloat = 2.0
     @State private var canvasView = PKCanvasView()
-    @State private var currentWeek = "Untitled Week"
+    @State private var sheetName = "Untitled"
     @State private var savedSheets: [String: PKDrawing] = [:]
-    @State private var isNamingSheet = false
+    @State private var isAddingNewSheet = false
     @State private var newSheetName = ""
-    @State private var showingSavedSheets = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 HStack {
-                    Menu {
+                    Picker("Select Week", selection: $sheetName) {
                         ForEach(Array(savedSheets.keys).sorted(), id: \.self) { name in
-                            Button(action: { loadSheet(name: name) }) {
-                                Text(name).font(.system(size: 14))
-                            }
+                            Text(name).tag(name)
                         }
-                        if !savedSheets.isEmpty {
-                            Divider()
-                            Button(role: .destructive, action: { deleteCurrentSheet() }) {
-                                Text("Delete Current Sheet").font(.system(size: 14))
-                            }
-                        }
-                    } label: {
-                        HStack {
-                            Text(currentWeek)
-                            Image(systemName: "chevron.down")
-                        }
-                        .font(.system(size: 14))
-                        .foregroundColor(.primary)
                     }
-                    
-                    Spacer()
-                    
-                    Button("Save") {
-                        isNamingSheet = true
-                    }
+                    .pickerStyle(MenuPickerStyle())
                     .font(.system(size: 14))
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
+                    .frame(width: 150)
+                    .onChange(of: sheetName) { newValue in
+                        loadSheet(name: newValue)
+                    }
+                    .overlay(
+                        HStack {
+                            Text(sheetName)
+                                .font(.system(size: 14))
+                                .foregroundColor(.primary)
+                            Spacer()
+                            Image(systemName: "chevron.down")
+                                .font(.system(size: 14))
+                                .foregroundColor(.primary)
+                        }
+                        .padding(.horizontal, 8)
+                    )
                     
                     Button("New Week") {
-                        newSheet()
+                        newSheetName = generateNewSheetName()
+                        isAddingNewSheet = true
                     }
                     .font(.system(size: 14))
                     .padding(.horizontal, 10)
@@ -65,6 +57,7 @@ struct ContentView: View {
                     .foregroundColor(.white)
                     .cornerRadius(5)
                     
+                    Spacer()
                     ColorPickerView(selectedColor: $selectedColor, penSize: $penSize)
                     Button(action: {
                         canvasView.drawing = PKDrawing()
@@ -90,42 +83,85 @@ struct ContentView: View {
             }
             .background(Color.white)
             .edgesIgnoringSafeArea(.all)
-            .alert("Name Your Sheet", isPresented: $isNamingSheet) {
-                TextField("Sheet Name", text: $newSheetName)
-                    .font(.system(size: 14))
-                Button("Save", action: saveCurrentSheet)
-                    .font(.system(size: 14))
+            .alert(isPresented: $isAddingNewSheet) {
+                Alert(
+                    title: Text("Add New Week").font(.system(size: 14)),
+                    message: Text("Enter a name for the new week:").font(.system(size: 14)),
+                    primaryButton: .default(Text("Add").font(.system(size: 14))) {
+                        newSheet()
+                    },
+                    secondaryButton: .cancel(Text("Cancel").font(.system(size: 14)))
+                )
+            }
+            .overlay(
+                Group {
+                    if isAddingNewSheet {
+                        Color.black.opacity(0.3)
+                            .edgesIgnoringSafeArea(.all)
+                            .overlay(
+                                VStack {
+                                    Text("Add New Week").font(.system(size: 14))
+                                    TextField("Week Name", text: $newSheetName)
+                                        .font(.system(size: 14))
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .padding()
+                                    HStack {
+                                        Button("Cancel") {
+                                            isAddingNewSheet = false
+                                        }
+                                        .font(.system(size: 14))
+                                        Button("Add") {
+                                            newSheet()
+                                            isAddingNewSheet = false
+                                        }
+                                        .font(.system(size: 14))
+                                    }
+                                }
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .padding()
+                            )
+                    }
+                }
+            )
+        }
+            .alert("Add New Week", isPresented: $isAddingNewSheet) {
+                TextField("Week Name", text: $sheetName)
+                Button("Add") {
+                    newSheet()
+                }
                 Button("Cancel", role: .cancel) {}
-                    .font(.system(size: 14))
-            } message: {
-                Text("Enter a name for this week's sheet")
-                    .font(.system(size: 14))
             }
         }
     }
     
     private func newSheet() {
-        currentWeek = "Untitled Week"
-        canvasView.drawing = PKDrawing()
+        saveCurrentSheet() // Save the current sheet before creating a new one
+        sheetName = generateNewSheetName()
+        canvasView.drawing = PKDrawing() // Clear the canvas for the new week
+        saveCurrentSheet() // Save the new empty sheet
+    }
+    
+    private func generateNewSheetName() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return "Week of " + dateFormatter.string(from: Date())
     }
     
     private func saveCurrentSheet() {
-        if !newSheetName.isEmpty {
-            savedSheets[newSheetName] = canvasView.drawing
-            currentWeek = newSheetName
-            newSheetName = ""
-        }
+        savedSheets[sheetName] = canvasView.drawing
     }
     
     private func loadSheet(name: String) {
         if let drawing = savedSheets[name] {
             canvasView.drawing = drawing
-            currentWeek = name
+            sheetName = name
         }
     }
     
     private func deleteCurrentSheet() {
-        savedSheets.removeValue(forKey: currentWeek)
+        savedSheets.removeValue(forKey: sheetName)
         newSheet()
     }
 }

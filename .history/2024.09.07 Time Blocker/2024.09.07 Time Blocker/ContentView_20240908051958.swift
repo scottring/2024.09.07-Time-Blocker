@@ -1,5 +1,5 @@
 //
-//          ContentView.swift
+//  ContentView.swift
 //  2024.09.07 Time Blocker
 //
 //  Created by Scott Kaufman on 9/7/24.
@@ -9,124 +9,75 @@ import SwiftUI
 import PencilKit
 
 struct ContentView: View {
-    @State private var selectedColor: Color = .black
+    @StateObject private var sheetManager = SheetManager()
+    @State private var selectedColor: UIColor = .black
     @State private var penSize: CGFloat = 2.0
-    @State private var canvasView = PKCanvasView()
-    @State private var currentWeek = "Untitled Week"
-    @State private var savedSheets: [String: PKDrawing] = [:]
-    @State private var isNamingSheet = false
+    @State private var isAddingSheet = false
     @State private var newSheetName = ""
-    @State private var showingSavedSheets = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        GeometryReader { geometry in
-            VStack(spacing: 0) {
-                HStack {
-                    Menu {
-                        ForEach(Array(savedSheets.keys).sorted(), id: \.self) { name in
-                            Button(action: { loadSheet(name: name) }) {
-                                Text(name).font(.system(size: 14))
-                            }
-                        }
-                        if !savedSheets.isEmpty {
-                            Divider()
-                            Button(role: .destructive, action: { deleteCurrentSheet() }) {
-                                Text("Delete Current Sheet").font(.system(size: 14))
-                            }
-                        }
-                    } label: {
-                        HStack {
-                            Text(currentWeek)
-                            Image(systemName: "chevron.down")
-                        }
-                        .font(.system(size: 14))
-                        .foregroundColor(.primary)
-                    }
-                    
-                    Spacer()
-                    
-                    Button("Save") {
-                        isNamingSheet = true
-                    }
-                    .font(.system(size: 14))
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
-                    
-                    Button("New Week") {
-                        newSheet()
-                    }
-                    .font(.system(size: 14))
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
-                    
-                    ColorPickerView(selectedColor: $selectedColor, penSize: $penSize)
-                    Button(action: {
-                        canvasView.drawing = PKDrawing()
-                    }) {
-                        Image(systemName: "trash")
+        NavigationView {
+            List {
+                ForEach(sheetManager.sheets) { sheet in
+                    NavigationLink(destination: DrawingView(drawing: Binding(
+                        get: { sheet.getDrawing() },
+                        set: { sheetManager.updateCurrentSheet(id: sheet.id, drawing: $0) }
+                    ), selectedColor: $selectedColor, penSize: $penSize)) {
+                        Text(sheet.name)
                     }
                 }
-                .padding()
-                
-                VStack(spacing: 0) {
-                    DayLabelsView(width: geometry.size.width)
-                    
-                    ScrollView(.vertical, showsIndicators: false) {
-                        ZStack {
-                            GridView(excludeDayLabels: true)
-                                .frame(width: geometry.size.width)
-                            
-                            DrawingView(canvasView: $canvasView, selectedColor: $selectedColor, penSize: $penSize)
-                                .frame(width: geometry.size.width, height: geometry.size.height * 2)
-                        }
+                .onDelete(perform: sheetManager.deleteSheet)
+            }
+            .navigationTitle("Sheets")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { isAddingSheet = true }) {
+                        Image(systemName: "plus")
                     }
                 }
             }
-            .background(Color.white)
-            .edgesIgnoringSafeArea(.all)
-            .alert("Name Your Sheet", isPresented: $isNamingSheet) {
+        }
+        .sheet(isPresented: $isAddingSheet) {
+            AddSheetView(isPresented: $isAddingSheet, sheetManager: sheetManager)
+        }
+        .onAppear {
+            handleAppearanceChange()
+        }
+        .onChange(of: colorScheme) { _ in
+            handleAppearanceChange()
+        }
+    }
+    
+    private func handleAppearanceChange() {
+        if colorScheme == .dark {
+            print("Dark mode is enabled")
+        } else {
+            print("Light mode is enabled")
+        }
+    }
+}
+
+struct AddSheetView: View {
+    @Binding var isPresented: Bool
+    @ObservedObject var sheetManager: SheetManager
+    @State private var newSheetName = ""
+    
+    var body: some View {
+        NavigationView {
+            Form {
                 TextField("Sheet Name", text: $newSheetName)
-                    .font(.system(size: 14))
-                Button("Save", action: saveCurrentSheet)
-                    .font(.system(size: 14))
-                Button("Cancel", role: .cancel) {}
-                    .font(.system(size: 14))
-            } message: {
-                Text("Enter a name for this week's sheet")
-                    .font(.system(size: 14))
             }
+            .navigationTitle("Add New Sheet")
+            .navigationBarItems(
+                leading: Button("Cancel") { isPresented = false },
+                trailing: Button("Add") {
+                    sheetManager.addSheet(name: newSheetName, drawing: PKDrawing())
+                    isPresented = false
+                }
+                .disabled(newSheetName.isEmpty)
+            )
         }
-    }
-    
-    private func newSheet() {
-        currentWeek = "Untitled Week"
-        canvasView.drawing = PKDrawing()
-    }
-    
-    private func saveCurrentSheet() {
-        if !newSheetName.isEmpty {
-            savedSheets[newSheetName] = canvasView.drawing
-            currentWeek = newSheetName
-            newSheetName = ""
-        }
-    }
-    
-    private func loadSheet(name: String) {
-        if let drawing = savedSheets[name] {
-            canvasView.drawing = drawing
-            currentWeek = name
-        }
-    }
-    
-    private func deleteCurrentSheet() {
-        savedSheets.removeValue(forKey: currentWeek)
-        newSheet()
     }
 }
 
