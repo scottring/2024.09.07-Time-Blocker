@@ -15,6 +15,7 @@
 		64BFDB8D2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFDB8C2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITests.swift */; };
 		64BFDB8F2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFDB8E2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITestsLaunchTests.swift */; };
 		64BFDBD62C8DA12C00D9CE70 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BFDBD52C8DA12C00D9CE70 /* DrawingView.swift */; };
+		64E288592C9051AF00D09682 /* info in Resources */ = {isa = PBXBuildFile; fileRef = 64E288582C9051AF00D09682 /* info */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		64BFDB8C2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _024_09_07_Time_BlockerUITests.swift; sourceTree = "<group>"; };
 		64BFDB8E2C8CF2D800D9CE70 /* _024_09_07_Time_BlockerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _024_09_07_Time_BlockerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		64BFDBD52C8DA12C00D9CE70 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		64E288582C9051AF00D09682 /* info */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = info; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		64BFDB702C8CF2D600D9CE70 /* 2024.09.07 Time Blocker */ = {
 			isa = PBXGroup;
 			children = (
+				64E288582C9051AF00D09682 /* info */,
 				64BFDB712C8CF2D600D9CE70 /* _024_09_07_Time_BlockerApp.swift */,
 				64BFDB732C8CF2D600D9CE70 /* ContentView.swift */,
 				64BFDBD52C8DA12C00D9CE70 /* DrawingView.swift */,
@@ -236,6 +239,7 @@
 			files = (
 				64BFDB792C8CF2D700D9CE70 /* Preview Assets.xcassets in Resources */,
 				64BFDB762C8CF2D700D9CE70 /* Assets.xcassets in Resources */,
+				64E288592C9051AF00D09682 /* info in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
